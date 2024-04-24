@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<title>view</title>
+</head>
+<body>
+<h3>view employee</h3>
+<p>
+    <a th:href="@{/personnel}">
+        Back to  list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/personnel/view/{id}(id=${personnels.getId()})}" th:object="${personnels}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="employeeCode">EmployeeCode</label>
+            <input type="text" id="employeeCode" th:field="*{employeeCode}"/>
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}"/>
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input type="text" id="age" th:field="*{age}"/>
+        </div>
+        <div>
+            <label for="salary">Salary</label>
+            <input type="text" id="salary" th:field="*{salary}"/>
+        </div>
+        <div>
+            <label for="department" >department</label>
+            <input type="text" id="department" th:field="*{department}"/>
+
+            </select>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

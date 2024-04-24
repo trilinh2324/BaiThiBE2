@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <title>List Personnel</title>
+</head>
+<div>
+    <a href="personnel/create">Add New</a>
+</div>
+    </br>
+    <div class="notify">
+        <div th:if="${message}">
+            <span th:text="${message}" style="color: red;"></span>
+        </div>
+    </div>
+
+    </br></br>
+<body>
+<table border="1" id = "personnel">
+    <thead >
+    <tr>
+        <th>EmployeeCode</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Department</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p, pStatus : ${personnels}">
+        <td th:text="${p.getEmployeeCode()}"></td>
+        <td><a th:href="@{/personnel/view/{id}(id=${p.getId()})}" th:text="${p.getName()}"></a></td>
+        <td th:text="${p.getAge()}"></td>
+        <td th:text="${p.getSalary()}"></td>
+        <td th:text="${p.getDepartment()}"></td>
+        <td><a th:href="@{/personnel/update/{id}(id=${p.getId()})}">update</a></td>
+        <td><a th:href="@{/personnel/delete/{id}(id=${p.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
